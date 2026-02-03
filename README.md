@@ -7,6 +7,15 @@ A backend system for a job portal supporting <strong>Employers</strong> and
 <strong>service-layer business rule enforcement</strong>.
 </p>
 
+<p><strong>Backend Capabilities Demonstrated:</strong></p>
+<ul>
+  <li>Role-based authorization using Spring Security and JWT</li>
+  <li>Service-layer enforcement of business rules</li>
+  <li>Pagination and sorting for scalable data access</li>
+  <li>Centralized exception handling</li>
+  <li>DTO-based REST API design</li>
+</ul>
+
 <hr/>
 
 <h2>Overview</h2>
@@ -14,7 +23,7 @@ A backend system for a job portal supporting <strong>Employers</strong> and
 This project demonstrates how a real-world backend system handles
 authentication, authorization, and domain-specific business rules.
 All critical decisions are enforced at the service layer to prevent
-unauthorized or invalid operations.
+unauthorized or invalid operations, regardless of API entry point.
 </p>
 
 <hr/>
@@ -23,9 +32,10 @@ unauthorized or invalid operations.
 <ul>
   <li>JWT-based authentication with stateless security</li>
   <li>Role-based access control (Employer, Job Seeker)</li>
-  <li>Employers can create and manage job postings</li>
-  <li>Job seekers can browse jobs and submit applications</li>
-  <li>Strict authorization and validation enforced at the service layer</li>
+  <li>Employers can create, update, and manage job postings</li>
+  <li>Job seekers can browse job listings and submit applications</li>
+  <li>Pagination and sorting support for job listings</li>
+  <li>Strict validation and authorization enforced at the service layer</li>
 </ul>
 
 <hr/>
@@ -45,19 +55,19 @@ unauthorized or invalid operations.
 <h2>Architecture & Design</h2>
 <ul>
   <li>Layered architecture (Controller, Service, Repository)</li>
+  <li>Thin controllers delegating logic to services</li>
   <li>DTO-based API contracts with validation</li>
   <li>Centralized exception handling for consistent API responses</li>
-  <li>Business rules enforced independently of API entry points</li>
 </ul>
 
 <hr/>
 
 <h2>Backend Design Decisions</h2>
 <ul>
-  <li>Authentication is stateless using JWT tokens</li>
-  <li>Authorization is enforced at the service layer, not only through annotations</li>
-  <li>Controllers remain thin, delegating logic to services</li>
-  <li>Invalid or unauthorized actions are blocked before persistence</li>
+  <li>Authentication implemented using stateless JWT tokens</li>
+  <li>Authorization enforced at the service layer, not only via annotations</li>
+  <li>Business rules validated before persistence to prevent invalid state</li>
+  <li>Controllers kept minimal to maintain separation of concerns</li>
 </ul>
 
 <hr/>
@@ -73,7 +83,8 @@ unauthorized or invalid operations.
 <h2>Running the Application Locally</h2>
 <ol>
   <li>Clone the repository</li>
-  <li>Configure PostgreSQL database credentials</li>
+  <li>Create a PostgreSQL database</li>
+  <li>Configure database credentials in <code>application.properties</code></li>
   <li>Build the project using Maven</li>
   <li>Run the Spring Boot application</li>
   <li>Test APIs using Postman or any REST client</li>
@@ -81,9 +92,18 @@ unauthorized or invalid operations.
 
 <hr/>
 
+<h2>What This Project Demonstrates</h2>
+<ul>
+  <li>Understanding of where backend business logic should reside</li>
+  <li>Ability to design secure APIs with role-based constraints</li>
+  <li>Handling of real-world backend concerns such as pagination and validation</li>
+  <li>Clean separation of concerns and maintainable backend structure</li>
+</ul>
+
+<hr/>
+
 <h2>Future Enhancements</h2>
 <ul>
-  <li>Pagination and sorting for job listings</li>
-  <li>Refresh token implementation</li>
   <li>Caching frequently accessed data</li>
+  <li>Advanced filtering and search for job listings</li>
 </ul>
