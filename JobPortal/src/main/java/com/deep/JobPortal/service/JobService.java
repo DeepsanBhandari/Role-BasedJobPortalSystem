@@ -4,6 +4,7 @@ import com.deep.JobPortal.dto.CreateJobRequest;
 import com.deep.JobPortal.dto.JobResponse;
 import com.deep.JobPortal.dto.UpdateJobRequest;
 import com.deep.JobPortal.model.Job;
+import com.deep.JobPortal.model.Role;
 import com.deep.JobPortal.model.User;
 import com.deep.JobPortal.repository.JobRepository;
 import com.deep.JobPortal.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 
@@ -31,6 +33,10 @@ public class JobService {
     public JobResponse createJob(CreateJobRequest request, String recruiterEmail){
         User recruiter = userRepository.findByEmail(recruiterEmail)
                 .orElseThrow(()->new RuntimeException("Recruiter not found"));
+
+        if (recruiter.getRole() != Role.RECRUITER) {
+            throw new AccessDeniedException("Only recruiters can create jobs");
+        }
 
         validateSalaryRange(request.getMinSalary(),request.getMaxSalary());
 
@@ -176,25 +182,5 @@ public class JobService {
         );
     }
 
-    public Page<JobResponse> getJobs(int page, int size) {
 
-        Pageable pageable = PageRequest.of(
-                page,
-                size,
-                Sort.by("createdAt").descending()
-        );
-
-        return JobRepository
-                .findAllByActiveTrue(pageable)
-                .map(this::mapToJobResponse);
-    }
-    private JobResponse mapToJobResponse(Job job) {
-        return JobResponse.builder()
-                .id(job.getId())
-                .title(job.getTitle())
-                .company(job.getCompany())
-                .location(job.getLocation())
-                .createdAt(job.getCreatedAt())
-                .build();
-    }
 }
