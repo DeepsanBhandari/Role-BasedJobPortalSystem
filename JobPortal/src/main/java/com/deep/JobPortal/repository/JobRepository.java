@@ -27,5 +27,5 @@ public interface JobRepository extends JpaRepository<Job,Long> {
     Page<Job> searchJobs(@Param("keyword") String keyword, Pageable pageable);
 
 
-    static Page<Job> findAllByActiveTrue(Pageable pageable);
+
 }

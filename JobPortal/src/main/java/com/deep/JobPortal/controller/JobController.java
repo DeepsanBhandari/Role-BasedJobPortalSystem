@@ -98,21 +98,4 @@ public class JobController {
         return ResponseEntity.ok(jobs);
     }
 
-    @GetMapping("/jobs")
-    public ResponseEntity<ApiResponse<Page<JobResponse>>> getJobs(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        "Jobs fetched successfully",
-                        jobService.getJobs(page, size)
-                )
-        );
-    }
-
-
-
-
-
 }
