@@ -56,7 +56,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
 
-                .authenticationProvider(auhenticationProvider())
+                .authenticationProvider(authenticationProvider())
 
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -94,7 +94,7 @@ public class SecurityConfig {
      */
 
     @Bean
-    public AuthenticationProvider auhenticationProvider(){
+    public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
