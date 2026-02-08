@@ -31,7 +31,7 @@ public class UserController {
         return ResponseEntity.ok(updateUser);
     }
 
-    //ADMIN can view any user
+    //ADMIN can view any user profile
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable Long userId){

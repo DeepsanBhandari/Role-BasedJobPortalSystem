@@ -36,7 +36,7 @@ public class JobController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-   //Get all active jobs
+   //Get all active Jobs
    @GetMapping
     public ResponseEntity<Page<JobResponse>> getAllActiveJobs(
             @RequestParam(defaultValue = "0") int page,

@@ -37,6 +37,7 @@ public class TestController {
         return "Welcome ADMIN:" +user.getUsername();
     }
 
+    //Hiring team
     @PreAuthorize("hasAnyRole('ADMIN','RECRUITER')")
     @GetMapping("/hiring-team")
     public String hiringTeamEndpoint(@AuthenticationPrincipal UserDetails user){
