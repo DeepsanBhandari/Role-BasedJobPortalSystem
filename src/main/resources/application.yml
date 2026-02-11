@@ -3,16 +3,7 @@ spring:
     name: JobPortal
 
   profiles:
-    active: dev   # change to prod in production
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
+    active: dev  # override in CI or production
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
@@ -20,3 +11,4 @@ jwt:
 
 server:
   port: 8080
+

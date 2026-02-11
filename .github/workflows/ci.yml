@@ -2,11 +2,9 @@ name: JobPortal CI Pipeline
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
   build:
@@ -25,8 +23,13 @@ jobs:
       - name: Grant execute permission to mvnw
         run: chmod +x mvnw
 
-      - name: Build with Maven (skip tests)
-        run: ./mvnw clean install -DskipTests
+      - name: Build with Maven (use in-memory DB)
+        run: |
+          ./mvnw clean install -DskipTests \
+            -Dspring.profiles.active=prod \
+            -Dspring.datasource.url=jdbc:h2:mem:testdb \
+            -Dspring.jpa.hibernate.ddl-auto=none
+
 
 
 
