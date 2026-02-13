@@ -1,11 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://prod-host:5432/jobportal
-    username: prod_user
-    password: prod_password
-    driver-class-name: org.postgresql.Driver
-
+    url: jdbc:postgresql://<YOUR_DATABASE_URL>:<YOUR_DATABASE_PORT>/<YOUR_DATABASE_NAME>
+    username: <YOUR_DATABASE_USERNAME>
+    password: <YOUR_DATABASE_PASSWORD>
   jpa:
     hibernate:
-      ddl-auto: validate
-
+      ddl-auto: update
+    show-sql: true
