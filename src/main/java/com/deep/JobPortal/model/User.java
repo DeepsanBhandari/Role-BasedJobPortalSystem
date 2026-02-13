@@ -97,6 +97,10 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<Job> jobs=new ArrayList<>();
 
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Application> applications = new ArrayList<>();
+
 
 
 }

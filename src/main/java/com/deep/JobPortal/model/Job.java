@@ -1,5 +1,6 @@
 package com.deep.JobPortal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="jobs")
@@ -60,5 +63,8 @@ public class Job {
     @Column(name="updated_at")
     private LocalDateTime updatedAt;
 
-
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Application> applications = new ArrayList<>();
 }
+

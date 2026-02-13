@@ -1,12 +1,14 @@
 spring:
   application:
     name: JobPortal
+
   profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}
+    active: dev  # override in CI or production
 
 jwt:
-  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
-  expiration: ${JWT_EXPIRATION:86400000}
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expiration: 86400000
 
 server:
-  port: ${PORT:8080}
+  port: 8080
+
