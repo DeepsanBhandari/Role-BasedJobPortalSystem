@@ -1,27 +1,17 @@
-# Application Configuration
+# Application configuration for local development
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/mydb
-    username: myuser
-    password: mypassword
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-# Additional Settings
 
 logging:
   level:
     org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          AbstractBatch: TRACE
-        type:
-          JdbcBatch: TRACE
+      hibernate: INFO
