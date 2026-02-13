@@ -4,7 +4,6 @@ spring:
     username: postgres
     password: 1234
     driver-class-name: org.postgresql.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,4 +11,3 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
