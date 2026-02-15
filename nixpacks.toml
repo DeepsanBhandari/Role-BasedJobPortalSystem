@@ -1,5 +1,5 @@
 ﻿[phases.setup]
-nixPkgs = ['maven_3_9', 'temurin-bin-17']
+nixPkgs = ['maven', 'jdk17']
 
 [phases.build]
 cmds = ['./mvnw clean install -DskipTests']
