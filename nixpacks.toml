@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ['maven', 'jdk17']
+
+[phases.build]
+cmds = ['./mvnw clean install -DskipTests']
+
+[phases.start]
+cmd = 'java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/JobPortal-0.0.1-SNAPSHOT.jar'

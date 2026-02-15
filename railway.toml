@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "./mvnw clean install -DskipTests"
+
+[deploy]
+startCommand = "java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/JobPortal-0.0.1-SNAPSHOT.jar"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
